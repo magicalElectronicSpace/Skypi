@@ -9,7 +9,7 @@ class Skypi:
             self.data = json.load(f)
 
         if self.data["set_up"] == False:
-            ifuser = input("Are you a developer of Skypi? ")
+            ifuser = input("Are you a developer of Skypi (y/n)? ")
             if ifuser == "y":
                 user = input("Enter your username: ")
             else:
