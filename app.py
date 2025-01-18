@@ -9,16 +9,21 @@ class Skypi:
             self.data = json.load(f)
 
         if self.data["set_up"] == False:
-            self.data = {"username": input("Enter what your log name will be: "), "set_up": True}
+            ifuser = input("Are you a developer of Skypi? ")
+            if ifuser == "y":
+                user = input("Enter your username: ")
+            else:
+                user = "skypi"
+            self.data = {"username": input("Enter what your log name will be: "), "user": user, "set_up": True}
             with open(Path(__file__).parent / "data.json", "w") as f:
                 json.dump(self.data, f)
 
     def log(self):
-        subprocess.run(["ssh", "skypi@skypi.club", f"echo \"\n{self.data["username"]}: {input("Enter the log to write: ")}\" >> logs.txt"])
+        subprocess.run(["ssh", f"{self.data["user"]}@skypi.club", f"echo \"\n{self.data["username"]}: {input("Enter the log to write: ")}\" >> logs.txt"])
 
 
     def logWithoutNameTag(self):
-        subprocess.run(["ssh", "skypi@skypi.club", f"echo \n{input("Enter the log to write: ")} >> logs.txt"])
+        subprocess.run(["ssh", f"{self.data["user"]}@skypi.club", f"echo \n{input("Enter the log to write: ")} >> logs.txt"])
 
 
     def run(self):
