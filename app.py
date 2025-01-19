@@ -19,11 +19,11 @@ class Skypi:
                 json.dump(self.data, f)
 
     def log(self):
-        subprocess.run(["ssh", f"{self.data["user"]}@skypi.club", f"echo \"\n{self.data["username"]}: {input("Enter the log to write: ")}\" >> logs.txt"])
+        subprocess.run(["ssh", f"{self.data["user"]}@skypi.club", f"echo \"\n{self.data["username"]}: {input("Enter the log to write: ")}\" >> /home/skypi/logs.txt"])
 
 
     def logWithoutNameTag(self):
-        subprocess.run(["ssh", f"{self.data["user"]}@skypi.club", f"echo \n{input("Enter the log to write: ")} >> logs.txt"])
+        subprocess.run(["ssh", f"{self.data["user"]}@skypi.club", f"echo \n{input("Enter the log to write: ")} >> /home/skypi/logs.txt"])
 
 
     def run(self):
